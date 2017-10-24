@@ -5,6 +5,8 @@
  */
 package people;
 
+import java.awt.Color;
+
 /**
  *
  * @author student
@@ -12,82 +14,87 @@ package people;
 
 /*trida human*/
 public class human {
-    /*vlastni vypoctovy typ */
-    public enum Sex{
-        MAN,WOMAN
+    /* Vlastní výčtový typ */
+    public enum Sex {
+        MAN, WOMAN
     }
-
+    /* Atributy třídy */
     private String name;
     private int age = 20;
     private int weight = 70;
     private float height = (float) 1.80;
     private Sex sex = Sex.MAN;
+    /* modifikator protected zabranuje pristuúu verejnemu */
+    protected Color eyes = Color.BLUE;
     
-    /*metody tridy human*/
-    
-    /*konstruktor tridy human*/
+    /* Metody třídy Human */
+    /* Konstruktor třídy Human */
     public human(String jmeno){
-        this.name = jmeno;
+       this.name = jmeno; 
     }
     
     public human(String jmeno, int age, Sex sex){
-        this.name = jmeno;
-        this.setAge(age);
-        this.setSex(sex);
-    }    
+       this.name = jmeno; 
+       this.setAge(age);
+       this.setSex(sex);
+    }
     
-    /* getters a setters*/
+    /* Getters a Setters */
     public int getAge(){
-        return this.age;
+       return this.age;
     }
     
     public void setAge(int age){
-       if(age > 0 && age < 130){
+        if (age > 0 && age < 130)
             this.age = age;
-       } 
-        
     }
-    
-    public int getWeight(){
-        return this.weight;
+
+    public String getName() {
+        return name;
     }
-    
-    public void setWeight(int weight){   
-            this.weight = weight; 
-        
+
+    public void setName(String name) {
+        this.name = name;
     }
-    
-    public float getHeight(){
-        return this.height;
+
+    public int getWeight() {
+        return weight;
     }
-    
-    public void setHeight(float height){   
-            this.height = height; 
-        
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
-    
-    public Sex getSex(){
+
+    public float getHeight() {
+        return height;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    public Sex getSex() {
         return sex;
     }
-    
-    public void setSex(Sex sex){   
-            this.sex = sex; 
-        
-    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
+    } 
     
     public double getBMI(){
         return Math.round(this.weight/Math.pow(this.height,2)*100.0)/100.0;
     }
     
-    public String toString(){
-        String output = "My name is " + this.name +"\n";
-        output += "i am "+ this.getSex() + "\n";
-        output += "age: "+ this.getAge() + "\n";
-        output += "height: " + this.getHeight() + "m\n";
-        output += "weight: " + this.getWeight() + "\n";
-        output += "BMI: "+ this.getBMI()+"\n";
+    @Override
+    public String toString() {
+        String output = "My name is " + this.name + "[human]";
+    /*    output += "I'm " + this.getSex() + "\n";
+        output += "Age: " + this.getAge() + " let\n";
+        output += "Height: " + this.getHeight() + " m\n";
+        output += "Weight: " + this.getWeight() + " kg\n";
+        output += "BMI: " + this.getBMI() + "\n";
+    */
+        return output;
         
-        
-        return output ;
     }
 }
